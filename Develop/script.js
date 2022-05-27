@@ -10,8 +10,8 @@ var symbolCharacter = ["!", "@", "#", "$", "%", "^", "&", "*", "-", "_", "+", "=
 var numberCharacter = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var upperCaseCharacter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowerCaseCharacter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",  "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-//var passwordCharacters = ["/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/"];
-//above help code found at:  https://www.w3resource.com/javascript/form/password-validation.php)
+var passwordCharacters = []
+
 
 
 function generatePassword(){
@@ -21,12 +21,30 @@ if (passwordLength <= 7 || passwordLength >= 129) {
   return passwordLength();
 } 
 
-switch 
 var symbols = confirm ("Would you like to include symbols/special characters?");
 var numbers = confirm ("Would you like to include numbers?");
 var lowerCase = confirm ("Would you like to use at least one lowercase letter?");
 var upperCase = confirm ("Would you like to use at least one uppercase letter?");
 
+if (symbols){
+   passwordCharacters = passwordCharacters.concat(symbolCharacter);
+}
+
+if (numbers) {
+  passwordCharacters = passwordCharacters.concat(numberCharacter);
+}
+
+if (lowerCase){
+  passwordCharacters = passwordCharacters.concat(lowerCaseCharacter);
+}
+if (upperCase) {
+  passwordCharacters = passwordCharacters.concat(upperCaseCharacter);
+}
+
+for (var i = 0; i < passwordLength; i++) {
+  characterSet.push(passwordCharacters[Math.floor(Math.random() * generation.length)]);
+}
+return characterSet.join('');
 
 }
 
@@ -45,3 +63,28 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
+
+
+
+
+
+
+
+var upper = ['A', 'B', 'C'];
+var lower = ['d', 'e', 'f'];
+var passwordChars = [];
+
+var wantsUppercase = window.confirm("do you want uppercase letters?");
+var wantsLowercase = window.confirm("do you want lowercase letters?");
+
+console.log("before concat", passwordChars);
+if (wantsUppercase) {
+   passwordChars = passwordChars.concat(upper);
+}
+if (wantsLowercase) {
+   passwordChars = passwordChars.concat(lower);
+}
+
+console.log("after concat, before join", passwordChars); //array [ "A", "B", "C", "d", "e", "f" ]
+console.log("after join", passwordChars.join("")); //string "ABCdef"
