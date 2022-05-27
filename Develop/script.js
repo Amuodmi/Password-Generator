@@ -12,7 +12,12 @@ var numberCharacter = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var upperCaseCharacter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowerCaseCharacter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",  "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
+
+//to log the received information
 var passwordCharacters = []
+var generate = []
+
+
 
 //function to start generator
 function generatePassword(){
@@ -21,13 +26,15 @@ if (passwordLength <= 7 || passwordLength >= 129) {
   window.prompt("Please enter a number between 8 - 128")
   return generatePassword();
 } 
-//password criteria questions
-var symbols = confirm ("Would you like to include symbols/special characters?");
-var numbers = confirm ("Would you like to include numbers?");
-var lowerCase = confirm ("Would you like to use at least one lowercase letter?");
-var upperCase = confirm ("Would you like to use at least one uppercase letter?");
 
-var generate = []
+
+//password criteria questions
+var symbols = confirm("Would you like to include symbols/special characters?");
+var numbers = confirm("Would you like to include numbers?");
+var lowerCase = confirm("Would you like to use at least one lowercase letter?");
+var upperCase = confirm("Would you like to use at least one uppercase letter?");
+
+
 
 //if statements to connect character arrays
 if (symbols){
@@ -46,21 +53,13 @@ if (upperCase) {
   generate = generate.concat(upperCaseCharacter);
 }
 
-//random math formula to generate unique password
+//random math formula to connect + generate unique password
 for (var i = 0; i < passwordLength; i++) {
   passwordCharacters.push(generate[Math.floor(Math.random() * generate.length)]);
 }
 return passwordCharacters.join('');
 
 }
-
-
-for ( var i = 0; i < length; i++ ) {
-  result += passwordCharacters(Math.floor(Math.random() * generate.length));
-}
-return result;
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
