@@ -23,9 +23,10 @@ var generate = []
 function generatePassword(){
   var passwordLength = window.prompt("How long would you like your password to be? (Enter a number between 8 - 128)");
 if (passwordLength <= 7 || passwordLength >= 129) {
-  window.prompt("Please enter a number between 8 - 128")
+  window.prompt("Please enter a number between 8 - 128");
   return generatePassword();
-} 
+}  
+
 
 
 //password criteria questions
